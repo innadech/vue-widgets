@@ -14,11 +14,7 @@ export default {
     >
       {{ flower }}
     </span>
-    <button
-      type="button"
-      class="btn btn-secondary btn-sm ms-3"
-      v-on:click="$emit('flower-deleted', flower)"
-    >
+    <button type="button" v-on:click="$emit('flower-deleted', flower)">
       Delete
     </button>
   </li>

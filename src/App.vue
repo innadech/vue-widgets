@@ -3,9 +3,18 @@ import FlowersList from './components/flowersList.vue'
 import FlowerSubmitter from './components/FlowerSubmitter.vue'
 import FruitsList from './components/FruitsList.vue'
 import FruitSubmitter from './components/FruitSubmitter.vue'
+import DrinksList from './components/DrinksList.vue'
+import DrinkSubmitter from './components/DrinkSubmitter.vue'
 
 export default {
-  components: { FlowersList, FlowerSubmitter, FruitSubmitter, FruitsList },
+  components: {
+    FlowersList,
+    FlowerSubmitter,
+    FruitSubmitter,
+    FruitsList,
+    DrinksList,
+    DrinkSubmitter,
+  },
 
   data() {
     return {
@@ -22,6 +31,7 @@ export default {
   <div>
     <h2>{{ flowers }}</h2>
     <h2>{{ fruits }}</h2>
+    <h2>{{ drinks }}</h2>
     <h2>Flowers</h2>
     <FlowerSubmitter v-on:flower-submitted="flowers.push($event)" />
     <FlowersList
@@ -41,9 +51,12 @@ export default {
   </div>
   <div>
     <h2>Drinks</h2>
-    <section>
-      <article>Water</article>
-    </section>
+    <DrinkSubmitter v-on:drink-submitted="drinks.push($event)" />
+    <DrinksList
+      v-bind:drinks="drinks"
+      v-on:drink-updated="drinks = $event"
+      v-on:drinks-removed="drinks = $event"
+    />
   </div>
 </template>
 
@@ -59,3 +72,6 @@ export default {
 <!-- <ol>
    <li>Orange</li>
  </ol> -->
+<!-- <section>
+      <article>Water</article>
+ </section> -->
