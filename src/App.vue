@@ -1,9 +1,11 @@
 <script>
 import FlowersList from './components/flowersList.vue'
 import FlowerSubmitter from './components/FlowerSubmitter.vue'
+import FruitsList from './components/FruitsList.vue'
+import FruitSubmitter from './components/FruitSubmitter.vue'
 
 export default {
-  components: { FlowersList, FlowerSubmitter },
+  components: { FlowersList, FlowerSubmitter, FruitSubmitter, FruitsList },
 
   data() {
     return {
@@ -19,6 +21,7 @@ export default {
   <h1>APP WIDGETS</h1>
   <div>
     <h2>{{ flowers }}</h2>
+    <h2>{{ fruits }}</h2>
     <h2>Flowers</h2>
     <FlowerSubmitter v-on:flower-submitted="flowers.push($event)" />
     <FlowersList
@@ -29,9 +32,12 @@ export default {
   </div>
   <div>
     <h2>Fruits</h2>
-    <ol>
-      <li>Orange</li>
-    </ol>
+    <FruitSubmitter v-on:fruit-submitted="fruits.push($event)" />
+    <FruitsList
+      v-bind:fruits="fruits"
+      v-on:fruits-updated="fruits = $event"
+      v-on:fruits-removed="fruits = $event"
+    />
   </div>
   <div>
     <h2>Drinks</h2>
@@ -50,3 +56,6 @@ export default {
  *
  * нарезаем на компоненты
  */ -->
+<!-- <ol>
+   <li>Orange</li>
+ </ol> -->
