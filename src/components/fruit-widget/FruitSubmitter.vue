@@ -27,7 +27,7 @@ export default {
       type="text"
       v-bind:value="fruit"
       v-on:input="fruit = $event.target.value"
-      v-on:keyup.enter="handleClickButton"
+      v-on:keypress.enter="handleClickButton"
     />
     <button v-on:click="handleClickButton">Add fruit</button>
   </div>

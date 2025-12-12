@@ -17,9 +17,9 @@ export default {
     <input
       v-bind:value="fruit"
       v-on:input="newFruit = $event.target.value"
-      v-on:keyup.enter="$emit('edited-fruit', newFruit)"
+      v-on:keypress="$emit('edited-fruit', newFruit)"
       ref="elInput"
-      v-on:keyup.esc="$refs.elInput.blur()"
+      v-on:keypress.esc="$refs.elInput.blur()"
     />
     <button type="button" v-on:click="$emit('edited-fruit', newFruit)">
       Edit
