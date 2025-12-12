@@ -1,5 +1,5 @@
 <script>
-import FlowersList from './components/flowersList.vue'
+import FlowersList from './components/FlowersList.vue'
 import FlowerSubmitter from './components/FlowerSubmitter.vue'
 import FruitsList from './components/FruitsList.vue'
 import FruitSubmitter from './components/FruitSubmitter.vue'
