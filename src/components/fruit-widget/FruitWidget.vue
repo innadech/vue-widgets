@@ -10,6 +10,12 @@ export default {
       fruits: [],
     }
   },
+
+  methods: {
+    submit(fruit) {
+      if (!this.fruits.includes(fruit)) this.fruits.push(fruit)
+    },
+  },
 }
 </script>
 
@@ -17,7 +23,7 @@ export default {
   <div>
     <h2>Fruits</h2>
     <h2>{{ fruits }}</h2>
-    <FruitSubmitter v-on:fruit-submitted="fruits.push($event)" />
+    <FruitSubmitter v-on:fruit-submitted="submit" />
     <FruitList
       v-bind:fruits="fruits"
       v-on:fruits-updated="fruits = $event"
