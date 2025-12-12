@@ -28,11 +28,11 @@ export default {
 <template>
   <section>
     <DrinkItem
-      v-for="drink in drinks"
-      v-bind:key="drink"
+      v-for="(drink, idx) of drinks"
+      v-bind:key="idx"
       v-bind:drink="drink"
-      v-on:drink-edited="updateDrink($event, drink)"
-      v-on:drink-deleted="deleteDrink"
+      v-on:edited-drink="updateDrink($event, drink)"
+      v-on:deleted-drink="deleteDrink"
     />
   </section>
 </template>

@@ -2,19 +2,30 @@
 export default {
   props: ['drink'],
 
-  emits: ['drink-deleted', 'drink-edited'],
+  emits: ['deleted-drink', 'edited-drink'],
+  data() {
+    return {
+      newDrink: '',
+    }
+  },
 }
 </script>
 
 <template>
   <article>
-    <span
-      contenteditable="true"
-      v-on:input="$emit('drink-edited', $event.target.innerText)"
-    >
-      {{ drink }}
-    </span>
-    <button type="button" v-on:click="$emit('drink-deleted', drink)">
+    <h2>{{ drink }}</h2>
+    <input
+      v-bind:value="drink"
+      v-on:input="newDrink = $event.target.value"
+      v-on:keyup.enter="$emit('edited-drink', newDrink)"
+      ref="elInput"
+      v-on:keyup.esc="$refs.elInput.blur()"
+    />
+    <button type="button" v-on:click="$emit('edited-drink', newDrink)">
+      Edit
+    </button>
+
+    <button v-on:click="$emit('deleted-drink', drink)" class="deleteButton">
       Delete
     </button>
   </article>

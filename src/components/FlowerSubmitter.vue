@@ -27,6 +27,7 @@ export default {
       type="text"
       v-bind:value="flower"
       v-on:input="flower = $event.target.value"
+      v-on:keyup.enter="handleClickButton"
     />
     <button v-on:click="handleClickButton">Add flower</button>
   </div>
