@@ -27,7 +27,7 @@ export default {
 <template>
   <ul>
     <FlowerItem
-      v-for="flower in flowers"
+      v-for="flower of flowers"
       v-bind:key="flower"
       v-bind:flower="flower"
       v-on:flower-deleted="deleteFlower($event)"
