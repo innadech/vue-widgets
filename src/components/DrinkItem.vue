@@ -21,12 +21,7 @@ export default {
       ref="elInput"
       v-on:keyup.esc="$refs.elInput.blur()"
     />
-    <button type="button" v-on:click="$emit('edited-drink', newDrink)">
-      Edit
-    </button>
-
-    <button v-on:click="$emit('deleted-drink', drink)" class="deleteButton">
-      Delete
-    </button>
+    <button v-on:click="$emit('edited-drink', newDrink)">Edit</button>
+    <button v-on:click="$emit('deleted-drink', drink)">Delete</button>
   </article>
 </template>

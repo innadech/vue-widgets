@@ -33,3 +33,11 @@
 edited - отредактировано
 
 updated - обновлено
+
+create - delete (obect)
+add - remove (string)
+push - pop
+append - pop
+
+contenteditable - это СТАТИСТИЧЕСКОЕ значение, часть HTML
+contenteditable="true" - нужно чтобы сделать любой HTML-элемент редактируемый прямо на странице как будто это <input></input>

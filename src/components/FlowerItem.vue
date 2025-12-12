@@ -22,15 +22,7 @@ export default {
       ref="elInput"
       v-on:keyup.esc="$refs.elInput.blur()"
     />
-    <button type="button" v-on:click="$emit('flower-edited', newFlower)">
-      Edit
-    </button>
-
-    <button v-on:click="$emit('flower-deleted', flower)" class="deleteButton">
-      Delete
-    </button>
+    <button v-on:click="$emit('flower-edited', newFlower)">Edit</button>
+    <button v-on:click="$emit('flower-deleted', flower)">Delete</button>
   </li>
 </template>
-
-<!-- contenteditable - это СТАТИСТИЧЕСКОЕ значение, часть HTML
-  contenteditable="true" - нужно чтобы сделать любой HTML-элемент редактируемый прямо на странице как будто это <input></input> -->

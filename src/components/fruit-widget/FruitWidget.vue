@@ -24,10 +24,6 @@ export default {
     <h2>Fruits</h2>
     <h2>{{ fruits }}</h2>
     <FruitSubmitter v-on:fruit-submitted="submit" />
-    <FruitList
-      v-bind:fruits="fruits"
-      v-on:fruits-updated="fruits = $event"
-      v-on:fruits-removed="fruits = $event"
-    />
+    <FruitList v-bind:fruits="fruits" v-on:fruits-updated="fruits = $event" />
   </div>
 </template>

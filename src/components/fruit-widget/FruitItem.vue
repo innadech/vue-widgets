@@ -2,7 +2,8 @@
 export default {
   props: ['fruit'],
 
-  emits: ['removed-fruit', 'edited-fruit'],
+  emits: ['fruit-deleted', 'fruit-updated'],
+
   data() {
     return {
       newFruit: '',
@@ -12,33 +13,15 @@ export default {
 </script>
 
 <template>
-  <li class="completed">
-    <h2>{{ fruit }}</h2>
+  <li>
     <input
+      ref="elInput"
       v-bind:value="fruit"
       v-on:input="newFruit = $event.target.value"
-      v-on:keypress="$emit('edited-fruit', newFruit)"
-      ref="elInput"
+      v-on:keypress="$emit('fruit-updated', newFruit)"
       v-on:keypress.esc="$refs.elInput.blur()"
     />
-    <button type="button" v-on:click="$emit('edited-fruit', newFruit)">
-      Edit
-    </button>
-
-    <button v-on:click="$emit('removed-fruit', fruit)" class="deleteButton">
-      Delete
-    </button>
+    <button v-on:click="$emit('fruit-updated', newFruit)">Edit</button>
+    <button v-on:click="$emit('fruit-deleted', fruit)">Delete</button>
   </li>
 </template>
-
-<!-- <li class="completed">
-    <input
-      v-bind:value="fruit"
-      v-on:input="$emit('edited-fruit', $event.target.value)"
-    />
-    <button type="button">Edit</button>
-
-    <button v-on:click="$emit('removed-fruit', fruit)" class="deleteButton">
-      Удалить
-    </button>
-  </li> -->
