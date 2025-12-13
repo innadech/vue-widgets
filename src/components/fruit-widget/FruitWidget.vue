@@ -7,7 +7,7 @@ export default {
 
   data() {
     return {
-      fruits: [],
+      fruits: ['banana', 'orange', 'apple'],
     }
   },
 
