@@ -5,19 +5,19 @@ export default {
 
   props: ['drinks'],
 
-  emit: ['drinks-removed', 'drink-updated'],
+  emit: ['drinks-updated'],
 
   methods: {
     deleteDrink(drink) {
       this.$emit(
-        'drinks-removed',
+        'drinks-updated',
         this.drinks.filter(d => d !== drink)
       )
     },
 
     updateDrink(newDrink, oldDrink) {
       this.$emit(
-        'drink-updated',
+        'drinks-updated',
         this.drinks.map(d => (d === oldDrink ? newDrink : d))
       )
     },
@@ -28,11 +28,11 @@ export default {
 <template>
   <section>
     <DrinkItem
-      v-for="(drink, idx) of drinks"
-      v-bind:key="idx"
+      v-for="drink of drinks"
+      v-bind:key="drink"
       v-bind:drink="drink"
-      v-on:edited-drink="updateDrink($event, drink)"
-      v-on:deleted-drink="deleteDrink"
+      v-on:drink-updated="updateDrink($event, drink)"
+      v-on:drink-deleted="deleteDrink"
     />
   </section>
 </template>

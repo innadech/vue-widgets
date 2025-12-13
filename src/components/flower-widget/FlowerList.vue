@@ -4,12 +4,13 @@ export default {
   components: { FlowerItem },
 
   props: ['flowers'],
-  emit: ['flowers-removed', 'flower-updated'],
+
+  emit: ['flower-updated'],
 
   methods: {
     deleteFlower(flower) {
       this.$emit(
-        'flowers-removed',
+        'flowers-updated',
         this.flowers.filter(f => f !== flower)
       )
     },
