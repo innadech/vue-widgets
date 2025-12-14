@@ -21,12 +21,8 @@ export default {
       this.isEditing = false
     },
     ok() {
-      this.$emit('fruit-updated', this.localFruit)
+      $emit('fruit-updated', localFruit)
       this.isEditing = false
-    },
-    edit() {
-      this.isEditing = true
-      this.$nextTick(() => this.$refs.elInp.focus())
     },
   },
 }
@@ -39,28 +35,15 @@ export default {
       ref="elInp"
       v-bind:value="localFruit"
       v-on:input="localFruit = $event.target.value"
-      v-on:keypress.enter="ok"
-      v-on:keydown.esc="cancel"
+      v-on:keypress.enter="$emit('fruit-updated', localFruit)"
+      v-on:keydown.esc=";(localFruit = fruit), (isEditing = false)"
     />
     <span v-else>{{ fruit }}</span>
 
-    <button v-on:click="edit">Edit</button>
+    <button v-on:click="isEditing = true">Edit</button>
     <button v-on:click="$emit('fruit-deleted', fruit)">Delete</button>
 
-    <button v-on:click="ok">Ok</button>
+    <button v-on:click="$emit('fruit-updated', localFruit)">Ok</button>
     <button v-on:click="cancel">Cancel</button>
   </li>
 </template>
-
-<style scoped>
-input {
-  width: 100px;
-  margin: 0;
-  padding: 0;
-  border: 0;
-}
-span {
-  display: inline-block;
-  width: 100px;
-}
-</style>
