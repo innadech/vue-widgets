@@ -1,5 +1,6 @@
 <script>
 import DrinkItem from './DrinkItem.vue'
+
 export default {
   components: { DrinkItem },
 
