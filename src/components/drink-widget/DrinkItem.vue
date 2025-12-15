@@ -10,6 +10,20 @@ export default {
       isEditing: false,
     }
   },
+  methods: {
+    cancel() {
+      this.localDrink = this.drink
+      this.isEditing = false
+    },
+    ok() {
+      this.$emit('drink-updated', this.localDrink)
+      this.isEditing = false
+    },
+    edit() {
+      this.$nextTick(() => this.$refs.elInput.focus())
+      this.isEditing = true
+    },
+  },
 }
 </script>
 
@@ -21,13 +35,15 @@ export default {
       ref="elInput"
       v-bind:value="localDrink"
       v-on:input="localDrink = $event.target.value"
+      v-on:keypress.enter="ok"
+      v-on:keydown.esc="cancel"
     />
     <span v-else>{{ drink }}</span>
 
-    <button v-on:click="isEditing = true">Edit</button>
+    <button v-on:click="edit">Edit</button>
     <button v-on:click="$emit('drink-deleted', drink)">Delete</button>
 
-    <button v-on:click="$emit('drink-updated', localDrink)">Ok</button>
-    <button v-on:click="localDrink = drink">Cancel</button>
+    <button v-on:click="ok">Ok</button>
+    <button v-on:click="cancel">Cancel</button>
   </article>
 </template>
