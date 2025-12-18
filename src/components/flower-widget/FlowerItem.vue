@@ -2,7 +2,7 @@
 export default {
   props: ['flower'],
 
-  emits: ['fruit-deleted', 'flower-updated'],
+  emits: ['flower-deleted', 'flower-updated'],
 
   data() {
     return {
@@ -20,8 +20,12 @@ export default {
       this.isEditing = false
     },
     edit() {
-      this.$nextTick(() => this.$refs.elInput.focus())
       this.isEditing = true
+      this.$nextTick(() => {
+        if (this.$refs.elInput) {
+          this.$refs.elInput.focus()
+        }
+      })
     },
   },
 }
@@ -29,7 +33,6 @@ export default {
 
 <template>
   <li>
-    <h3>{{ localFlower }}</h3>
     <input
       v-if="isEditing"
       ref="elInput"
@@ -47,3 +50,16 @@ export default {
     <button v-on:click="cancel">Cancel</button>
   </li>
 </template>
+
+<style scoped>
+input {
+  width: 100px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+span {
+  display: inline-block;
+  width: 100px;
+}
+</style>

@@ -31,5 +31,6 @@ export default {
       v-on:keydown.esc="drink = ''"
     />
     <button v-on:click="handleClickButton">Add Drink</button>
+    <button v-on:click="drink = ''">Cancel</button>
   </div>
 </template>

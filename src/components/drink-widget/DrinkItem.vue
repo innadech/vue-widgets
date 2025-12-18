@@ -20,8 +20,8 @@ export default {
       this.isEditing = false
     },
     edit() {
-      this.$nextTick(() => this.$refs.elInput.focus())
       this.isEditing = true
+      this.$nextTick(() => this.$refs.elInput.focus())
     },
   },
 }
@@ -29,7 +29,6 @@ export default {
 
 <template>
   <article>
-    <h3>{{ localDrink }}</h3>
     <input
       v-if="isEditing"
       ref="elInput"
@@ -47,3 +46,16 @@ export default {
     <button v-on:click="cancel">Cancel</button>
   </article>
 </template>
+
+<style scoped>
+input {
+  width: 100px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+span {
+  display: inline-block;
+  width: 100px;
+}
+</style>

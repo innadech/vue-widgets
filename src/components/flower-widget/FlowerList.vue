@@ -5,20 +5,19 @@ export default {
 
   props: ['flowers'],
 
-  emit: ['flower-updated'],
+  emit: ['flowers-updated'],
 
   methods: {
+    updateFlower(newFlower, oldFlower) {
+      this.$emit(
+        'flowers-updated',
+        this.flowers.map(f => (f === oldFlower ? newFlower : f))
+      )
+    },
     deleteFlower(flower) {
       this.$emit(
         'flowers-updated',
         this.flowers.filter(f => f !== flower)
-      )
-    },
-
-    updateFlower(newFlower, oldFlower) {
-      this.$emit(
-        'flower-updated',
-        this.flowers.map(f => (f === oldFlower ? newFlower : f))
       )
     },
   },
@@ -32,7 +31,7 @@ export default {
       v-bind:key="flower"
       v-bind:flower="flower"
       v-on:flower-deleted="deleteFlower($event)"
-      v-on:flower-edited="updateFlower($event, flower)"
+      v-on:flower-updated="updateFlower($event, flower)"
     />
   </ul>
 </template>

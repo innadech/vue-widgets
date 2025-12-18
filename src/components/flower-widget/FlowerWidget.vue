@@ -21,7 +21,6 @@ export default {
 
 <template>
   <div>
-    <h2>Flowers</h2>
     <h2>{{ flowers }}</h2>
     <FlowerSubmitter v-on:flower-submitted="submit" />
     <FlowerList

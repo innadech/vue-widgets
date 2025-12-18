@@ -11,7 +11,7 @@ export default {
   methods: {
     handleClickButton() {
       if (this.flower !== '') {
-        this.$emit('flower-submitted', this.flower)
+        this.$emit('flower-submitted', this.flower.toLowerCase())
         this.flower = ''
       }
       this.$refs.elInput.focus()
@@ -31,5 +31,6 @@ export default {
       v-on:keydown.esc="flower = ''"
     />
     <button v-on:click="handleClickButton">Add flower</button>
+    <button v-on:click="flower = ''">Cancel</button>
   </div>
 </template>
